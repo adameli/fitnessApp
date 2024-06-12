@@ -8,5 +8,7 @@
 </head>
 <body>
     <h1>Fitness App</h1>
+
+    <script src="index.js"></script>
 </body>
 </html>

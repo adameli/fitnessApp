@@ -22,15 +22,15 @@ CREATE TABLE workouts (
     name TEXT NOT NULL,
     description TEXT,
     created_by INTEGER,
-    FOREIGN KEY (created_by) REFERENCES Users(id)
+    FOREIGN KEY (created_by) REFERENCES users(id)
 );
 
 CREATE TABLE user_workouts (
     user_id INTEGER,
     workout_id INTEGER,
     PRIMARY KEY (user_id, workout_id),
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (workout_id) REFERENCES Workouts(id)
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (workout_id) REFERENCES workouts(id)
 );
 
 CREATE TABLE exercises (
@@ -46,8 +46,8 @@ CREATE TABLE workout_exercises (
     repetitions INTEGER,
     sets INTEGER,
     PRIMARY KEY (workout_id, exercise_id),
-    FOREIGN KEY (workout_id) REFERENCES Workouts(id),
-    FOREIGN KEY (exercise_id) REFERENCES Exercises(id)
+    FOREIGN KEY (workout_id) REFERENCES workouts(id),
+    FOREIGN KEY (exercise_id) REFERENCES exercises(id)
 );
 
 
