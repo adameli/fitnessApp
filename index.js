@@ -1,3 +1,5 @@
+
+
 //* Post Bodies
 const register = {
     username: 'Adam',
@@ -75,7 +77,7 @@ const defaultWorkouts = './api/workout.php?action=default_workouts'
 const request = new Request(`./api/user.php?action=register`, {
     method: 'POST',
     headers: { "Content-type": 'application/json' },
-    body: JSON.stringify(postData)
+    body: JSON.stringify()
 })
 
 // fetcher(request)

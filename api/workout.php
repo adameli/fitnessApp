@@ -23,7 +23,29 @@ function get_default_workouts() {
     $pdo = get_pdo();
     $stmt = $pdo->query('SELECT * FROM Workouts WHERE created_by IS NULL');
     $workouts = $stmt->fetchAll();
+
+      // Get exercises for each workout
+      foreach ($workouts as &$workout) {
+        $stmt = $pdo->prepare('
+            SELECT we.exercise_id, e.name, we.exercise_order, we.repetitions, we.sets 
+            FROM Workout_Exercises we
+            JOIN Exercises e ON we.exercise_id = e.id
+            WHERE we.workout_id = ?
+            ORDER BY we.exercise_order
+        ');
+        $stmt->execute([$workout['id']]);
+        $workout['exercises'] = $stmt->fetchAll();
+    }
+    
     send($workouts);
+}
+
+function get_exercises() {
+    $pdo = get_pdo();
+    $stmt = $pdo->query('SELECT * FROM exercises');
+    $exercises = $stmt->fetchAll();
+
+    send($exercises);
 }
 
 function get_user_workouts($token) {
@@ -155,6 +177,8 @@ switch ($method) {
     case 'GET':
         if ($action === 'default_workouts') {
             get_default_workouts();
+        } elseif ($action === 'exercises') {
+            get_exercises();
         } elseif ($action === 'user_workouts') {
             $token = $_GET['token'] ?? '';
             get_user_workouts($token);
