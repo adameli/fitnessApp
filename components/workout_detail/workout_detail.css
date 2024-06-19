@@ -1,0 +1,62 @@
+#workout-detail-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}
+
+#workout-detail {
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+#workout-detail h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.exercise-container {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.exercise-container p {
+    margin: 5px 0;
+}
+
+button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+button.hidden,
+div.hidden {
+    display: none;
+}
+
+#timer {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+input[type="checkbox"].exercise-complete {
+    margin-left: 10px;
+    transform: scale(1.5);
+}

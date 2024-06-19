@@ -2,23 +2,32 @@ import { PubSub } from "../../../logic/pubsub.js";
 import { STATE } from "../../../logic/state.js";
 PubSub.subscribe({ event: 'renderApp', listener: loginRegister })
 
-function loginRegister() {
+async function loginRegister() {
+    if (window.localStorage.getItem('token')) {
+        const token = window.localStorage.getItem('token');
+        await STATE.fillState(token)
+        PubSub.publish({ event: 'renderHome', detail: null });
+        return
+    }
+
     const app = document.getElementById('app');
 
     let isLogin = true;
 
     const render = () => {
         app.innerHTML = `
-        <div>
-          <h2>${isLogin ? 'Login' : 'Register'}</h2>
-          <form id="authForm">
-            ${!isLogin ? '<input type="email" id="email" placeholder="Email" required><br>' : ''}
-            <input type="text"value="Adam" id="username" placeholder="Username" required><br>
-            <input type="password" value="lol" id="password" placeholder="Password" required><br>
-            <button type="submit">${isLogin ? 'Login' : 'Register'}</button>
-          </form>
-          <button id="toggleForm">${isLogin ? 'Switch to Register' : 'Switch to Login'}</button>
-          <div id="message"></div>
+        <div id="login-register-wrapper" class="wrapper">
+            <div class="auth-container">
+                <h2 class="auth-title">${isLogin ? 'Login' : 'Register'}</h2>
+                <form id="authForm" class="auth-form">
+                    ${!isLogin ? '<input type="email" id="email" placeholder="Email" class="auth-input" required><br>' : ''}
+                    <input type="text" value="Adam" id="username" placeholder="Username" class="auth-input" required><br>
+                    <input type="password" value="lol" id="password" placeholder="Password" class="auth-input" required><br>
+                    <button type="submit" class="auth-button">${isLogin ? 'Login' : 'Register'}</button>
+                </form>
+                <button id="toggleForm" class="toggle-button">${isLogin ? 'Switch to Register' : 'Switch to Login'}</button>
+                <div id="message" class="auth-message"></div>
+            </div>
         </div>
       `;
 
@@ -59,9 +68,11 @@ function loginRegister() {
                 messageElement.style.color = 'green';
 
                 if (isLogin) {
-                    await STATE.fillState('$2y$10$DYm0uOPxpJJvx5iFN12wDOCfgfnYQjsTUSvaJACLrf3WWgpd1EgMi')
+                    const token = result.token;
+                    window.localStorage.setItem('token', token);
+                    await STATE.fillState(token)
                     console.log(STATE.getEntity('userWorkouts'))
-                    // PubSub.publish({ event: 'renderHome', detail: null });
+                    PubSub.publish({ event: 'renderHome', detail: null });
 
                 }
             } else {

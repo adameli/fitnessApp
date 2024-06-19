@@ -1,0 +1,80 @@
+/* General Styles */
+#login-register-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Auth Container */
+.auth-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Auth Title */
+.auth-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Auth Form */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Auth Input */
+.auth-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Auth Button */
+.auth-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.auth-button:hover {
+    background-color: #218838;
+}
+
+/* Toggle Button */
+.toggle-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+/* Auth Message */
+.auth-message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: red;
+}

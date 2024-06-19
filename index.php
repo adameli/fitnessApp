@@ -73,10 +73,10 @@ function static_css_links ()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness</title>
+    <link rel="stylesheet" href="index.css">
     <?php echo static_css_links(); ?>
 </head>
 <body>
-    <h1>Fitness App</h1>
     <div id="app"></div>
 
     <script type="module" src="index.js"></script>
