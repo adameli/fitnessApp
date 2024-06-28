@@ -4,7 +4,8 @@ import { PubSub } from "../../../logic/pubsub.js";
 
 PubSub.subscribe({ event: 'renderWorkoutDetail', listener: renderWorkoutDetail });
 
-function renderWorkoutDetail(workoutId) {
+function renderWorkoutDetail(data) {
+    const { workoutId, defaultWorkout } = data;
     const app = document.getElementById('app');
 
     // Retrieve the workout details from the state
@@ -34,7 +35,7 @@ function renderWorkoutDetail(workoutId) {
             </div>
             `).join('')}
         </div>
-        <button id="edit-button">Edit</button>
+         ${!defaultWorkout ? `<button id="edit-button">Edit</button>` : ''}
         <button id="save-button" class="hidden">Save</button>
         <button id="start-button">Start Workout</button>
         <div id="timer" class="hidden">00:00:00</div>
@@ -42,7 +43,7 @@ function renderWorkoutDetail(workoutId) {
     </div>
   `;
 
-    document.getElementById('edit-button').addEventListener('click', enableEdit);
+    !defaultWorkout ? document.getElementById('edit-button').addEventListener('click', enableEdit) : '';
     document.getElementById('save-button').addEventListener('click', () => saveWorkout(workoutId));
     document.getElementById('start-button').addEventListener('click', startWorkout);
 

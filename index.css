@@ -13,8 +13,9 @@ body {
     /*the width of a iphone 15 pro max*/
     background: rgb(167, 208, 224);
     width: 100%;
-    height: 100dvh;
+    /* height: 100dvh; */
     margin: 0 auto;
+    position: relative;
 }
 
 .wrapper {

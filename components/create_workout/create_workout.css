@@ -1,0 +1,63 @@
+/* Popup Styles */
+.popup {
+    position: absolute;
+    top: 0;
+    /* left: 50%; */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: inherit;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.popup-header button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup-header button:hover {
+    background-color: #0056b3;
+}
+
+.popup-body {
+    text-align: left;
+}
+
+.popup-body input,
+.popup-body textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#selected-exercises .exercise-container {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+#selected-exercises .exercise-container p {
+    margin: 5px 0;
+}
+
+#selected-exercises .exercise-container label {
+    display: block;
+    margin: 5px 0;
+}
